@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reproductor en Vivo</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+
+<video id="video" controls autoplay playsinline></video>
+
+<script>
+  // URL de ejemplo
+  const urlOriginal = "https://streamtp11.com/global1.php?stream=tudn_usa";
+
+  // Convertir a Base64
+  const urlBase64 = btoa(urlOriginal);
+
+  // Decodificar para usar en el reproductor
+  const decodedUrl = atob(urlBase64);
+
+  const video = document.getElementById("video");
+
+  if (Hls.isSupported()) {
+    const hls = new Hls();
+    hls.loadSource(decodedUrl);
+    hls.attachMedia(video);
+  } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+    video.src = decodedUrl;
+  }
+
+  // Muestra la URL Base64 en consola (opcional)
+  console.log("URL Base64:", urlBase64);
+</script>
+
+</body>
+</html>
