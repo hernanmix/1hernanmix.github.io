@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LiveHD - ESPN</title>
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+  <style>
+    body {
+      background: #111;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #player {
+      width: 90vw;
+      max-width: 960px;
+      height: 60vw;
+      max-height: 540px;
+      background: #000;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+    }
+  </style>
+</head>
+<body>
+  <div id="player"></div>
+  <script>
+    var player = new Clappr.Player({
+      source: "https://streamtp11.com/global1.php?stream=espn",
+      parentId: "#player",
+      autoPlay: true,
+      mute: false,
+      height: '100%',
+      width: '100%',
+      poster: '',
+      mediacontrol: { seekbar: "#1db954", buttons: "#fff" },
+    });
+  </script>
+</body>
+</html>
